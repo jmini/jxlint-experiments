@@ -1,0 +1,42 @@
+//tag::vardef[]
+:gh-repo-owner: jmini
+:gh-repo-name: jxlint-experiments
+
+:project-name: jxlint experiments
+:git-branch: master
+:twitter-handle: j2r2b
+:license: https://opensource.org/licenses/MIT
+:license-name: MIT License
+
+:git-repository: {gh-repo-owner}/{gh-repo-name}
+:homepage: https://{gh-repo-owner}.github.io/{gh-repo-name}
+:issues: https://github.com/{git-repository}/issues
+//end::vardef[]
+
+//tag::header[]
+= {project-name}
+Experiments with the jxlint framework
+//end::header[]
+
+//tag::description[]
+== Description
+link:http://selesse.com/jxlint/[jxlint] is a framework to perform static analysis in Java.
+It is an open-source project hosted link:https://github.com/selesse/jxlint[on GitHub].
+This repository contains some experiments around the framework.
+
+//end::description[]
+Read more on the link:{homepage}[project home page].
+
+//tag::contact-section[]
+== Get in touch
+
+Use the link:{issues}[{project-name} issue tracker] on GitHub.
+
+You can also contact me on Twitter: link:https://twitter.com/{twitter-handle}[@{twitter-handle}]
+//end::contact-section[]
+
+//tag::license-section[]
+== License
+
+link:{license}[{license-name}]
+//end::license-section[]
