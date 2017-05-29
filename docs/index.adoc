@@ -16,7 +16,16 @@ TIP: Do you want to improve this page? Please git-link:self[edit it on GitHub].
 
 include::{github-readme}[tags=description]
 
-NOTE: TODO extend the description
+=== Linter examples
+
+These projects are using the jxlint framework and demonstrate how static analysis tools can be written.
+
+==== jxlint-impl
+
+git-link:jxlint-impl/[jxlint-impl] is copied from the link:https://github.com/selesse/jxlint[jxlint repository on GitHub].
+It perform some checks on java files.
+
+NOTE: TODO add additional linter examples
 
 include::{github-readme}[tags=contact-section]
 
