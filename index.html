@@ -556,6 +556,11 @@ Do you want to improve this page? Please <a href="https://github.com/jmini/jxlin
 It is an open-source project hosted <a href="https://github.com/selesse/jxlint">on GitHub</a>.
 This repository contains some experiments around the framework.</p>
 </div>
+<div class="sect2">
+<h3 id="linter-examples"><a class="anchor" href="#linter-examples"></a>Linter examples</h3>
+<div class="paragraph">
+<p>These projects are using the jxlint framework and demonstrate how static analysis tools can be written.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -563,10 +568,92 @@ This repository contains some experiments around the framework.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-TODO extend the description
+TODO add additional linter examples
 </td>
 </tr>
 </table>
+</div>
+<div class="sect3">
+<h4 id="jxlint-impl"><a class="anchor" href="#jxlint-impl"></a>jxlint-impl</h4>
+<div class="paragraph">
+<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/jxlint-impl">jxlint-experiments/jxlint-impl (GitHub)</a> is copied from the <a href="https://github.com/selesse/jxlint">jxlint repository on GitHub</a>.
+It performs some checks on java files.</p>
+</div>
+<div class="paragraph">
+<p>The modifications to the original project are tagged in the source code with a <code>&lt;customized&gt;&#8230;&#8203;&lt;/customized&gt;</code> section wrapped in java comments.
+Have a look at <a href="https://github.com/jmini/jxlint-experiments/blob/master/jxlint-impl/src/main/java/com/selesse/jxlintimpl/Main.java">Main.java</a> for an example.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project-examples"><a class="anchor" href="#project-examples"></a>Project examples</h3>
+<div class="paragraph">
+<p>These example projects demonstrate how the linters can be used.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+TODO add additional examples project
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example-project-java"><a class="anchor" href="#example-project-java"></a>example-project-java</h4>
+<div class="paragraph">
+<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/example-project-java">jxlint-experiments/example-project-java (GitHub)</a> is a simple Java project containing a main class and a unit test class: <code>JavaExampleTest</code>.
+This class contains on purpose some mistakes, that should be marked as error by the <a href="#jxlint-impl">jxlint-impl</a> linter.</p>
+</div>
+<div class="paragraph">
+<p>The linter is started during the maven build, using the <code>org.codehaus.mojo:exec-maven-plugin</code> plugin.
+Here is the corresponding configuration taken from the <a href="https://github.com/jmini/jxlint-experiments/blob/master/example-project-java/pom.xml">pom.xml</a> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>org.codehaus.mojo<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>exec-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="comment">&lt;!-- Do not use 1.6.0 because of #76 issue
+             https://github.com/mojohaus/exec-maven-plugin/issues/76 --&gt;</span>
+        <span class="tag">&lt;version&gt;</span>1.5.0<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;executions&gt;</span>
+                <span class="tag">&lt;execution&gt;</span>
+                        <span class="tag">&lt;phase&gt;</span>test<span class="tag">&lt;/phase&gt;</span>
+                        <span class="tag">&lt;goals&gt;</span>
+                                <span class="tag">&lt;goal&gt;</span>java<span class="tag">&lt;/goal&gt;</span>
+                        <span class="tag">&lt;/goals&gt;</span>
+                <span class="tag">&lt;/execution&gt;</span>
+        <span class="tag">&lt;/executions&gt;</span>
+        <span class="tag">&lt;configuration&gt;</span>
+                <span class="tag">&lt;executableDependency&gt;</span>
+                        <span class="tag">&lt;groupId&gt;</span>fr.jmini.jxlint<span class="tag">&lt;/groupId&gt;</span>
+                        <span class="tag">&lt;artifactId&gt;</span>jxlint-impl<span class="tag">&lt;/artifactId&gt;</span>
+                <span class="tag">&lt;/executableDependency&gt;</span>
+                <span class="tag">&lt;includePluginDependencies&gt;</span>true<span class="tag">&lt;/includePluginDependencies&gt;</span>
+                <span class="tag">&lt;includeProjectDependencies&gt;</span>false<span class="tag">&lt;/includeProjectDependencies&gt;</span>
+                <span class="tag">&lt;mainClass&gt;</span>com.selesse.jxlintimpl.Main<span class="tag">&lt;/mainClass&gt;</span>
+                <span class="tag">&lt;arguments&gt;</span>
+                        <span class="tag">&lt;argument&gt;</span>--html<span class="tag">&lt;/argument&gt;</span>
+                        <span class="tag">&lt;argument&gt;</span>${project.build.directory}/jxlint-report.html<span class="tag">&lt;/argument&gt;</span>
+                        <span class="tag">&lt;argument&gt;</span>${project.basedir}<span class="tag">&lt;/argument&gt;</span>
+                <span class="tag">&lt;/arguments&gt;</span>
+        <span class="tag">&lt;/configuration&gt;</span>
+        <span class="tag">&lt;dependencies&gt;</span>
+                <span class="tag">&lt;dependency&gt;</span>
+                        <span class="tag">&lt;groupId&gt;</span>fr.jmini.jxlint<span class="tag">&lt;/groupId&gt;</span>
+                        <span class="tag">&lt;artifactId&gt;</span>jxlint-impl<span class="tag">&lt;/artifactId&gt;</span>
+                        <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+                        <span class="tag">&lt;type&gt;</span>jar<span class="tag">&lt;/type&gt;</span>
+                <span class="tag">&lt;/dependency&gt;</span>
+        <span class="tag">&lt;/dependencies&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -592,7 +679,7 @@ TODO extend the description
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-10 07:48:53 CET
+Last updated 2017-06-02 21:37:27 CEST
 </div>
 </div>
 </body>
