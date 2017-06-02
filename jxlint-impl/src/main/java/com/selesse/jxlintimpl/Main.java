@@ -9,7 +9,8 @@ public class Main {
     public static void main(String[] args) {
         Categories.setCategories(CustomCategories.class);
 
-        Jxlint jxlint = new Jxlint(new JxlintImplRules(), new JxlintImplProgramSettings());
+        Jxlint jxlint = new Jxlint(new JxlintImplRules(), new JxlintImplProgramSettings()
+            /* <customized> do not call System#exit(..) after reporting in order to continue with the maven build */, false /* </customized> */);
         jxlint.parseArgumentsAndDispatch(args);
     }
 }
