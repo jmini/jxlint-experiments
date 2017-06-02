@@ -9,6 +9,7 @@
 
     <modules>
         <module>jxlint-impl</module>
+        <module>example-project-java</module>
     </modules>
 
     <pluginRepositories>

@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>fr.jmini.jxlint</groupId>
+	<artifactId>my-java-project</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+<!-- tag::config[] -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<!-- Do not use 1.6.0 because of #76 issue
+				     https://github.com/mojohaus/exec-maven-plugin/issues/76 -->
+				<version>1.5.0</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executableDependency>
+						<groupId>fr.jmini.jxlint</groupId>
+						<artifactId>jxlint-impl</artifactId>
+					</executableDependency>
+					<includePluginDependencies>true</includePluginDependencies>
+					<includeProjectDependencies>false</includeProjectDependencies>
+					<mainClass>com.selesse.jxlintimpl.Main</mainClass>
+					<arguments>
+						<argument>--html</argument>
+						<argument>${project.build.directory}/jxlint-report.html</argument>
+						<argument>${project.basedir}</argument>
+					</arguments>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>fr.jmini.jxlint</groupId>
+						<artifactId>jxlint-impl</artifactId>
+						<version>1.0.0-SNAPSHOT</version>
+						<type>jar</type>
+					</dependency>
+				</dependencies>
+			</plugin>
+<!-- end::config[] -->
+		</plugins>
+	</build>
+</project>

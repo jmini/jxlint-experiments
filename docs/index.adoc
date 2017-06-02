@@ -30,6 +30,25 @@ It performs some checks on java files.
 The modifications to the original project are tagged in the source code with a `<customized>...</customized>` section wrapped in java comments.
 Have a look at git-link:jxlint-impl/src/main/java/com/selesse/jxlintimpl/Main.java[Main.java] for an example.
 
+=== Project examples
+
+These example projects demonstrate how the linters can be used.
+
+NOTE: TODO add additional examples project
+
+==== example-project-java
+
+git-link:example-project-java/[jxlint-experiments/example-project-java (GitHub)] is a simple Java project containing a main class and a unit test class: `JavaExampleTest`.
+This class contains on purpose some mistakes, that should be marked as error by the <<jxlint-impl>> linter.
+
+The linter is started during the maven build, using the `org.codehaus.mojo:exec-maven-plugin` plugin.
+Here is the corresponding configuration taken from the git-link:example-project-java/pom.xml[pom.xml] file:
+
+[source,xml]
+----
+include::../example-project-java/pom.xml[tags="config", indent="0"]
+----
+
 include::{github-readme}[tags=contact-section]
 
 include::{github-readme}[tags=license-section]
