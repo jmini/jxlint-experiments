@@ -1,4 +1,4 @@
-:github-readme: ../README.adoc
+:github-readme: ../../README.adoc
 
 include::{github-readme}[tags=vardef]
 
@@ -46,7 +46,7 @@ Here is the corresponding configuration taken from the git-link:example-project-
 
 [source,xml]
 ----
-include::../example-project-java/pom.xml[tags="config", indent="0"]
+include::../../example-project-java/pom.xml[tags="config", indent="0"]
 ----
 
 include::{github-readme}[tags=contact-section]
