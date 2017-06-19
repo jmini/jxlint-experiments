@@ -20,15 +20,20 @@ include::{github-readme}[tags=description]
 
 These projects are using the jxlint framework and demonstrate how static analysis tools can be written.
 
-NOTE: TODO add additional linter examples
-
 ==== jxlint-impl
 
-git-link:jxlint-impl/[jxlint-experiments/jxlint-impl (GitHub)] is copied from the link:https://github.com/selesse/jxlint[jxlint repository on GitHub].
+git-link:jxlint-impl/[jxlint-impl (GitHub)] is copied from `jxlint-impl` in the link:https://github.com/selesse/jxlint[jxlint repository on GitHub].
 It performs some checks on java files.
 
 The modifications to the original project are tagged in the source code with a `<customized>...</customized>` section wrapped in java comments.
 Have a look at git-link:jxlint-impl/src/main/java/com/selesse/jxlintimpl/Main.java[Main.java] for an example.
+
+==== txtlinter
+
+git-link:txtlinter/[txtlinter (GitHub)] is a linter example that performs some checks on `*.txt` files:
+
+* Lines should not be longer than 80 characters
+* Multiple empty new lines at the end of the document are not allowed
 
 === Project examples
 
@@ -38,7 +43,7 @@ NOTE: TODO add additional examples project
 
 ==== example-project-java
 
-git-link:example-project-java/[jxlint-experiments/example-project-java (GitHub)] is a simple Java project containing a main class and a unit test class: `JavaExampleTest`.
+git-link:example-project-java/[example-project-java (GitHub)] is a simple Java project containing a main class and a unit test class: `JavaExampleTest`.
 This class contains on purpose some mistakes, that should be marked as error by the <<jxlint-impl>> linter.
 
 The linter is started during the maven build, using the `org.codehaus.mojo:exec-maven-plugin` plugin.
