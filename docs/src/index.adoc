@@ -37,17 +37,27 @@ git-link:txtlinter/[txtlinter (GitHub)] is a linter example that performs some c
 
 === Project examples
 
-These example projects demonstrate how the linters can be used.
-
-NOTE: TODO add additional examples project
+These example projects provide some content for the linters.
 
 ==== example-project-java
 
 git-link:example-project-java/[example-project-java (GitHub)] is a simple Java project containing a main class and a unit test class: `JavaExampleTest`.
 This class contains on purpose some mistakes, that should be marked as error by the <<jxlint-impl>> linter.
 
-The linter is started during the maven build, using the `org.codehaus.mojo:exec-maven-plugin` plugin.
-Here is the corresponding configuration taken from the git-link:example-project-java/pom.xml[pom.xml] file:
+==== example-project-txt
+
+git-link:example-project-txt/[example-project-txt (GitHub)] is a simple maven project (`pom` packaging) containing a single text file in the `src` folder.
+This `file.txt` contains on purpose some mistakes, that should be marked as error by the <<txtlinter>> linter.
+
+=== How to run the linters?
+
+The example projects should be tested by the linters.
+Different approaches can be used.
+
+==== exec-maven-plugin
+
+The `org.codehaus.mojo:exec-maven-plugin` maven plugin is a generic plugin to run java programs during the build.
+Here is the corresponding configuration taken from the git-link:example-project-java/pom.xml[example-project-java/pom.xml] file:
 
 [source,xml]
 ----

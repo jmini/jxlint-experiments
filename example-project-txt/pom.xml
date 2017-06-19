@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>fr.jmini.jxlint</groupId>
+	<artifactId>example-project-txt</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<!-- Do not use 1.6.0 because of #76 issue https://github.com/mojohaus/exec-maven-plugin/issues/76 -->
+				<version>1.5.0</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executableDependency>
+						<groupId>fr.jmini.jxlint</groupId>
+						<artifactId>txtlinter</artifactId>
+					</executableDependency>
+					<includePluginDependencies>true</includePluginDependencies>
+					<includeProjectDependencies>false</includeProjectDependencies>
+					<mainClass>fr.jmini.txtlinter.Main</mainClass>
+					<arguments>
+						<argument>--html</argument>
+						<argument>${project.build.directory}/txtlinter-report.html</argument>
+						<argument>${project.basedir}</argument>
+					</arguments>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>fr.jmini.jxlint</groupId>
+						<artifactId>txtlinter</artifactId>
+						<version>1.0.0-SNAPSHOT</version>
+						<type>jar</type>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>

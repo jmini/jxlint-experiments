@@ -12,6 +12,7 @@
         <module>jxlint-impl</module>
         <module>txtlinter</module>
         <module>example-project-java</module>
+        <module>example-project-txt</module>
     </modules>
 
 </project>
