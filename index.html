@@ -541,7 +541,7 @@ table.CodeRay td.code>pre{padding:0}
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Do you want to improve this page? Please <a href="https://github.com/jmini/jxlint-experiments/blob/master/docs/index.adoc">edit it on GitHub</a>.
+Do you want to improve this page? Please <a href="https://github.com/jmini/jxlint-experiments/blob/master/docs/src/index.adoc">edit it on GitHub</a>.
 </td>
 </tr>
 </table>
@@ -561,22 +561,10 @@ This repository contains some experiments around the framework.</p>
 <div class="paragraph">
 <p>These projects are using the jxlint framework and demonstrate how static analysis tools can be written.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-TODO add additional linter examples
-</td>
-</tr>
-</table>
-</div>
 <div class="sect3">
 <h4 id="jxlint-impl"><a class="anchor" href="#jxlint-impl"></a>jxlint-impl</h4>
 <div class="paragraph">
-<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/jxlint-impl">jxlint-experiments/jxlint-impl (GitHub)</a> is copied from the <a href="https://github.com/selesse/jxlint">jxlint repository on GitHub</a>.
+<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/jxlint-impl">jxlint-impl (GitHub)</a> is copied from <code>jxlint-impl</code> in the <a href="https://github.com/selesse/jxlint">jxlint repository on GitHub</a>.
 It performs some checks on java files.</p>
 </div>
 <div class="paragraph">
@@ -584,33 +572,54 @@ It performs some checks on java files.</p>
 Have a look at <a href="https://github.com/jmini/jxlint-experiments/blob/master/jxlint-impl/src/main/java/com/selesse/jxlintimpl/Main.java">Main.java</a> for an example.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="txtlinter"><a class="anchor" href="#txtlinter"></a>txtlinter</h4>
+<div class="paragraph">
+<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/txtlinter">txtlinter (GitHub)</a> is a linter example that performs some checks on <code>*.txt</code> files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Lines should not be longer than 80 characters</p>
+</li>
+<li>
+<p>Multiple empty new lines at the end of the document are not allowed</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="project-examples"><a class="anchor" href="#project-examples"></a>Project examples</h3>
 <div class="paragraph">
-<p>These example projects demonstrate how the linters can be used.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-TODO add additional examples project
-</td>
-</tr>
-</table>
+<p>These example projects provide some content for the linters.</p>
 </div>
 <div class="sect3">
 <h4 id="example-project-java"><a class="anchor" href="#example-project-java"></a>example-project-java</h4>
 <div class="paragraph">
-<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/example-project-java">jxlint-experiments/example-project-java (GitHub)</a> is a simple Java project containing a main class and a unit test class: <code>JavaExampleTest</code>.
+<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/example-project-java">example-project-java (GitHub)</a> is a simple Java project containing a main class and a unit test class: <code>JavaExampleTest</code>.
 This class contains on purpose some mistakes, that should be marked as error by the <a href="#jxlint-impl">jxlint-impl</a> linter.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="example-project-txt"><a class="anchor" href="#example-project-txt"></a>example-project-txt</h4>
 <div class="paragraph">
-<p>The linter is started during the maven build, using the <code>org.codehaus.mojo:exec-maven-plugin</code> plugin.
-Here is the corresponding configuration taken from the <a href="https://github.com/jmini/jxlint-experiments/blob/master/example-project-java/pom.xml">pom.xml</a> file:</p>
+<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/example-project-txt">example-project-txt (GitHub)</a> is a simple maven project (<code>pom</code> packaging) containing a single text file in the <code>src</code> folder.
+This <code>file.txt</code> contains on purpose some mistakes, that should be marked as error by the <a href="#txtlinter">txtlinter</a> linter.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-run-the-linters"><a class="anchor" href="#how-to-run-the-linters"></a>How to run the linters?</h3>
+<div class="paragraph">
+<p>The example projects should be tested by the linters.
+Different approaches can be used.</p>
+</div>
+<div class="sect3">
+<h4 id="exec-maven-plugin"><a class="anchor" href="#exec-maven-plugin"></a>exec-maven-plugin</h4>
+<div class="paragraph">
+<p>The <code>org.codehaus.mojo:exec-maven-plugin</code> maven plugin is a generic plugin to run java programs during the build.
+Here is the corresponding configuration taken from the <a href="https://github.com/jmini/jxlint-experiments/blob/master/example-project-java/pom.xml">example-project-java/pom.xml</a> file:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -679,7 +688,7 @@ Here is the corresponding configuration taken from the <a href="https://github.c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-02 21:37:27 CEST
+Last updated 2017-06-19 10:48:50 CEST
 </div>
 </div>
 </body>
