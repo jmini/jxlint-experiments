@@ -19,30 +19,30 @@ import com.selesse.jxlint.settings.ProgramSettings;
 public abstract class AbstractJxlintMojo extends AbstractMojo {
 
   private static final String SOURCE_DIRECTORY = "sourceDirectory";
-  private static final String WARNINGS_ARE_ERRORS = "warningAsError";
+  private static final String WARNINGS_ARE_ERRORS = "warningAsErrors";
   private static final String OUTPUT_TYPE = "outputType";
   private static final String OUTPUT_FILE = "outputFile";
 
   @Parameter(property = SOURCE_DIRECTORY, defaultValue = "${project.basedir}")
-  protected File paramSourceDirectory;
+  protected File sourceDirectory;
 
   /**
    * Treat all warnings as errors.
    */
   @Parameter(property = WARNINGS_ARE_ERRORS, defaultValue = "false")
-  protected boolean paramWaringsAreError = false;
+  protected boolean waringsAreErrors = false;
 
   /**
    * Type of report that should be created (xml, html)
    */
   @Parameter(property = OUTPUT_TYPE, defaultValue = "html")
-  protected String paramOutputType;
+  protected String outputType;
 
   /**
    * Name of the file, where the report will be created.
    */
   @Parameter(property = OUTPUT_FILE, defaultValue = "${project.build.directory}/report.html")
-  protected File paramOutputFile;
+  protected File outputFile;
 
   protected abstract ProgramSettings provideProgramSettings();
 
@@ -53,13 +53,13 @@ public abstract class AbstractJxlintMojo extends AbstractMojo {
   protected ProgramOptions createProgramOptions() {
     ProgramOptions options = new ProgramOptions();
 
-    getLog().debug("set source directory option to '" + paramSourceDirectory.getAbsolutePath() + "'");
-    options.setSourceDirectory(paramSourceDirectory.getAbsolutePath());
+    getLog().debug("set source directory option to '" + sourceDirectory.getAbsolutePath() + "'");
+    options.setSourceDirectory(sourceDirectory.getAbsolutePath());
 
-    addOption(options, JxlintOption.OUTPUT_TYPE, paramOutputType);
-    addOption(options, JxlintOption.OUTPUT_TYPE_PATH, paramOutputFile.getAbsolutePath());
+    addOption(options, JxlintOption.OUTPUT_TYPE, outputType);
+    addOption(options, JxlintOption.OUTPUT_TYPE_PATH, outputFile.getAbsolutePath());
 
-    String werror = paramWaringsAreError ? "true" : "false";
+    String werror = waringsAreErrors ? "true" : "false";
     addOption(options, JxlintOption.WARNINGS_ARE_ERRORS, werror);
 
     return options;

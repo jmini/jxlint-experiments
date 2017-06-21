@@ -92,6 +92,19 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>fr.jmini.jxlint</groupId>
+				<artifactId>txtlinter-maven-plugin</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>generate-report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>

@@ -54,6 +54,16 @@ This `file.txt` contains on purpose some mistakes, that should be marked as erro
 The example projects should be tested by the linters.
 Different approaches can be used.
 
+==== Specific maven plugins
+For the two linters, two specific maven plugin have been created git-link:jxlint-impl-maven-plugin/[jxlint-impl-maven-plugin (GitHub)] and git-link:txtlinter-maven-plugin/[txtlinter-maven-plugin (GitHub)].
+
+They can be used directly as any other maven plugin:
+
+[source,xml]
+----
+include::../../example-project-java/pom.xml[tags="config-maven-plugin", indent="0"]
+----
+
 ==== exec-maven-plugin
 
 The `org.codehaus.mojo:exec-maven-plugin` maven plugin is a generic plugin to run java programs during the build.
@@ -61,7 +71,7 @@ Here is the corresponding configuration taken from the git-link:example-project-
 
 [source,xml]
 ----
-include::../../example-project-java/pom.xml[tags="config", indent="0"]
+include::../../example-project-java/pom.xml[tags="config-exec-plugin", indent="0"]
 ----
 
 include::{github-readme}[tags=contact-section]
