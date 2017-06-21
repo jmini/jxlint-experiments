@@ -616,6 +616,37 @@ This <code>file.txt</code> contains on purpose some mistakes, that should be mar
 Different approaches can be used.</p>
 </div>
 <div class="sect3">
+<h4 id="specific-maven-plugins"><a class="anchor" href="#specific-maven-plugins"></a>Specific maven plugins</h4>
+<div class="paragraph">
+<p>For the two linters, two specific maven plugin have been created <a href="https://github.com/jmini/jxlint-experiments/tree/master/jxlint-impl-maven-plugin">jxlint-impl-maven-plugin (GitHub)</a> and <a href="https://github.com/jmini/jxlint-experiments/tree/master/txtlinter-maven-plugin">txtlinter-maven-plugin (GitHub)</a>.</p>
+</div>
+<div class="paragraph">
+<p>They can be used directly as any other maven plugin:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>fr.jmini.jxlint<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>jxlint-impl-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;executions&gt;</span>
+                <span class="tag">&lt;execution&gt;</span>
+                        <span class="tag">&lt;phase&gt;</span>test<span class="tag">&lt;/phase&gt;</span>
+                        <span class="tag">&lt;goals&gt;</span>
+                                <span class="tag">&lt;goal&gt;</span>generate-report<span class="tag">&lt;/goal&gt;</span>
+                        <span class="tag">&lt;/goals&gt;</span>
+                        <span class="tag">&lt;configuration&gt;</span>
+                                <span class="tag">&lt;sourceDirectory&gt;</span>${project.basedir}/src<span class="tag">&lt;/sourceDirectory&gt;</span>
+                                <span class="tag">&lt;outputType&gt;</span>xml<span class="tag">&lt;/outputType&gt;</span>
+                                <span class="tag">&lt;outputFile&gt;</span>${project.build.directory}/report.xml<span class="tag">&lt;/outputFile&gt;</span>
+                        <span class="tag">&lt;/configuration&gt;</span>
+                <span class="tag">&lt;/execution&gt;</span>
+        <span class="tag">&lt;/executions&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="exec-maven-plugin"><a class="anchor" href="#exec-maven-plugin"></a>exec-maven-plugin</h4>
 <div class="paragraph">
 <p>The <code>org.codehaus.mojo:exec-maven-plugin</code> maven plugin is a generic plugin to run java programs during the build.
@@ -688,7 +719,7 @@ Here is the corresponding configuration taken from the <a href="https://github.c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-19 10:48:50 CEST
+Last updated 2017-06-21 06:43:14 CEST
 </div>
 </div>
 </body>
