@@ -29,6 +29,8 @@ public class AbstractJxlintMojoTest {
 
   private void initValidConfiguration() {
     mojoUnderTest.setSourceDirectory(tempDirectory);
+    mojoUnderTest.setNoWarnings(false);
+    mojoUnderTest.setAllWarnings(false);
     mojoUnderTest.setWaringsAreErrors(false);
     mojoUnderTest.setOutputType("html");
     mojoUnderTest.setOutputFile(new File(tempDirectory, "my-report.html"));
@@ -40,7 +42,9 @@ public class AbstractJxlintMojoTest {
 
     ProgramOptions options = mojoUnderTest.callCreateProgramOptions();
     assertThat(options.getSourceDirectory()).isEqualTo(tempDirectory.getAbsolutePath());
-    assertThat(options.getOption(JxlintOption.WARNINGS_ARE_ERRORS)).isEqualTo("false");
+    assertThat(options.hasOption(JxlintOption.NO_WARNINGS)).isEqualTo(false);
+    assertThat(options.hasOption(JxlintOption.ALL_WARNINGS)).isEqualTo(false);
+    assertThat(options.hasOption(JxlintOption.WARNINGS_ARE_ERRORS)).isEqualTo(false);
     assertThat(options.getOutputType()).isEqualTo(OutputType.HTML);
     assertThat(options.getOption(JxlintOption.OUTPUT_TYPE_PATH)).isEqualTo(new File(tempDirectory, "my-report.html").getAbsolutePath());
   }
@@ -51,13 +55,17 @@ public class AbstractJxlintMojoTest {
     File srcFolder = new File(tempDirectory, "src");
 
     mojoUnderTest.setSourceDirectory(srcFolder);
+    mojoUnderTest.setNoWarnings(true);
+    mojoUnderTest.setAllWarnings(true);
     mojoUnderTest.setWaringsAreErrors(true);
     mojoUnderTest.setOutputType("xml");
     mojoUnderTest.setOutputFile(reportFile);
 
     ProgramOptions options = mojoUnderTest.callCreateProgramOptions();
     assertThat(options.getSourceDirectory()).isEqualTo(srcFolder.getAbsolutePath());
-    assertThat(options.getOption(JxlintOption.WARNINGS_ARE_ERRORS)).isEqualTo("true");
+    assertThat(options.hasOption(JxlintOption.NO_WARNINGS)).isEqualTo(true);
+    assertThat(options.hasOption(JxlintOption.ALL_WARNINGS)).isEqualTo(true);
+    assertThat(options.hasOption(JxlintOption.WARNINGS_ARE_ERRORS)).isEqualTo(true);
     assertThat(options.getOutputType()).isEqualTo(OutputType.XML);
     assertThat(options.getOption(JxlintOption.OUTPUT_TYPE_PATH)).isEqualTo(reportFile.getAbsolutePath());
   }
@@ -108,6 +116,14 @@ public class AbstractJxlintMojoTest {
 
     public void setSourceDirectory(File sourceDirectory) {
       this.sourceDirectory = sourceDirectory;
+    }
+
+    public void setNoWarnings(boolean noWarnings) {
+      this.noWarnings = noWarnings;
+    }
+
+    public void setAllWarnings(boolean allWarnings) {
+      this.allWarnings = allWarnings;
     }
 
     public void setWaringsAreErrors(boolean waringsAreErrors) {

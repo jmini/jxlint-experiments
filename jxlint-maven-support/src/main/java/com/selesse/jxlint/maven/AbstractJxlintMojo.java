@@ -19,12 +19,26 @@ import com.selesse.jxlint.settings.ProgramSettings;
 public abstract class AbstractJxlintMojo extends AbstractMojo {
 
   private static final String SOURCE_DIRECTORY = "sourceDirectory";
+  private static final String NO_WARNINGS = "noWarnings";
+  private static final String ALL_WARNINGS = "allWarnings";
   private static final String WARNINGS_ARE_ERRORS = "warningAsErrors";
   private static final String OUTPUT_TYPE = "outputType";
   private static final String OUTPUT_FILE = "outputFile";
 
   @Parameter(property = SOURCE_DIRECTORY, defaultValue = "${project.basedir}")
   protected File sourceDirectory;
+
+  /**
+   * Only check for errors; ignore warnings.
+   */
+  @Parameter(property = NO_WARNINGS, defaultValue = "false")
+  protected boolean noWarnings = false;
+
+  /**
+   * Check all warnings, including those off by default.
+   */
+  @Parameter(property = ALL_WARNINGS, defaultValue = "false")
+  protected boolean allWarnings = false;
 
   /**
    * Treat all warnings as errors.
@@ -59,8 +73,9 @@ public abstract class AbstractJxlintMojo extends AbstractMojo {
     addOption(options, JxlintOption.OUTPUT_TYPE, outputType);
     addOption(options, JxlintOption.OUTPUT_TYPE_PATH, outputFile.getAbsolutePath());
 
-    String werror = waringsAreErrors ? "true" : "false";
-    addOption(options, JxlintOption.WARNINGS_ARE_ERRORS, werror);
+    addBooleanOption(options, JxlintOption.NO_WARNINGS, noWarnings);
+    addBooleanOption(options, JxlintOption.ALL_WARNINGS, allWarnings);
+    addBooleanOption(options, JxlintOption.WARNINGS_ARE_ERRORS, waringsAreErrors);
 
     return options;
   }
@@ -68,6 +83,16 @@ public abstract class AbstractJxlintMojo extends AbstractMojo {
   private void addOption(ProgramOptions options, JxlintOption option, String value) {
     getLog().debug("set option '" + option + "' to '" + value + "'");
     options.addOption(option, value);
+  }
+
+  private void addBooleanOption(ProgramOptions options, JxlintOption option, boolean value) {
+    if (value) {
+      getLog().debug("add option '" + option + "' with default value");
+      options.addOption(option);
+    }
+    else {
+      getLog().debug("option '" + option + "' is not added");
+    }
   }
 
   @Override
