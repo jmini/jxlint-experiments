@@ -15,12 +15,8 @@ import com.google.common.io.Files;
 import com.selesse.jxlint.model.JxlintOption;
 import com.selesse.jxlint.model.OutputType;
 import com.selesse.jxlint.model.ProgramOptions;
-import com.selesse.jxlint.model.rules.LintRules;
-import com.selesse.jxlint.settings.ProgramSettings;
 import com.selesse.jxlintimpl.CustomCategories;
-import com.selesse.jxlintimpl.rules.JxlintImplRules;
 import com.selesse.jxlintimpl.rules.impl.FunctionsStartingWithTestAreTests;
-import com.selesse.jxlintimpl.settings.JxlintImplProgramSettings;
 
 public class AbstractJxlintMojoTest {
 
@@ -151,22 +147,7 @@ public class AbstractJxlintMojoTest {
     }
   }
 
-  private static class TestJxlintImplMojo extends AbstractJxlintMojo {
-
-    @Override
-    protected ProgramSettings provideProgramSettings() {
-      return new JxlintImplProgramSettings();
-    }
-
-    @Override
-    protected LintRules provideLintRules() {
-      return new JxlintImplRules();
-    }
-
-    @Override
-    protected Class<? extends Enum<?>> provideCategories() {
-      return CustomCategories.class;
-    }
+  private static class TestJxlintImplMojo extends CharCheckerMojo {
 
     public void setSourceDirectory(File sourceDirectory) {
       this.sourceDirectory = sourceDirectory;

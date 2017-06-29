@@ -1,0 +1,1 @@
+In a text file (ending with `.txt`) the line should not contain a number.
