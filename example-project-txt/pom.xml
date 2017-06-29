@@ -97,6 +97,7 @@
 						<configuration>
 							<outputType>html</outputType>
 							<outputFile>${project.build.directory}/report_all.html</outputFile>
+							<srcPathPrefix>https://github.com/jmini/jxlint-experiments/tree/master/example-project-txt</srcPathPrefix>
 						</configuration>
 					</execution>
 					<execution>

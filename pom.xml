@@ -9,7 +9,6 @@
 
     <modules>
         <module>docs</module>
-        <module>jxlint-maven-support</module>
         <module>jxlint-impl</module>
         <module>jxlint-impl-maven-plugin</module>
         <module>txtlinter</module>

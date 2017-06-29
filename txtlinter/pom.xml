@@ -13,7 +13,7 @@
     <dependency>
       <groupId>com.selesse</groupId>
       <artifactId>jxlint</artifactId>
-      <version>1.7.2</version>
+      <version>2.0.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
