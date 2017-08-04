@@ -6,14 +6,15 @@
   <properties>
     <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
     <maven.release.plugin.version>2.5.2</maven.release.plugin.version>
+    <jxlint.version>2.0.0-SNAPSHOT</jxlint.version>
     <project.java.version>1.8</project.java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
     <dependency>
       <groupId>com.selesse</groupId>
-      <artifactId>jxlint</artifactId>
-      <version>2.0.0-SNAPSHOT</version>
+      <artifactId>jxlint-cli</artifactId>
+      <version>${jxlint.version}</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
