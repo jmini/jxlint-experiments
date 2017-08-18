@@ -18,35 +18,6 @@
 
 	<build>
 		<plugins>
-			<!--
-			    Workaround for "jxlint/#11" https://github.com/selesse/jxlint/issues/11
-			    An empty text file is created in the target directory, otherwise this folder do not exist when "txtlinter" is executed.
-			-->
-			<plugin>
-				<groupId>ru.yaal.maven</groupId>
-				<artifactId>write-text-files-maven-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<charset>UTF-8</charset>
-					<files>
-						<file>
-							<path>${project.build.directory}/empty.txt</path>
-							<lines>
-								<line></line>
-							</lines>
-						</file>
-					</files>
-				</configuration>
-				<executions>
-					<execution>
-						<id>write-empty-file</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>write-text-files</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -69,8 +40,8 @@
 					<includeProjectDependencies>false</includeProjectDependencies>
 					<mainClass>fr.jmini.txtlinter.Main</mainClass>
 					<arguments>
-						<argument>--html</argument>
-						<argument>${project.build.directory}/txtlinter-report.html</argument>
+						<argument>--xml</argument>
+						<argument>${project.build.directory}/report.xml</argument>
 						<argument>${project.basedir}</argument>
 					</arguments>
 				</configuration>
