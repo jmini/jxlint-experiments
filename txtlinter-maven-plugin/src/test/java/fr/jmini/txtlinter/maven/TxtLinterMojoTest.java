@@ -38,10 +38,10 @@ public class TxtLinterMojoTest extends AbstractMojoTestCase {
     TxtLinterMojo mojo = (TxtLinterMojo) lookupMojo("generate-report", testPom);
     assertNotNull(mojo);
 
-    replacePlaceholder(mojo, "sourceDirectory", testPom);
-    replacePlaceholder(mojo, "outputFile", testPom);
+    replacePlaceholder(mojo, TxtLinterMojo.SOURCE_DIRECTORY, testPom);
+    replacePlaceholder(mojo, TxtLinterMojo.OUTPUT_FILE, testPom);
 
-    File ouputFile = (File) getVariableValueFromObject(mojo, "outputFile");
+    File ouputFile = (File) getVariableValueFromObject(mojo, TxtLinterMojo.OUTPUT_FILE);
     assertFalse(ouputFile.exists());
 
     mojo.execute();
