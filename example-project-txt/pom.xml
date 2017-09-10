@@ -34,11 +34,11 @@
 				<configuration>
 					<executableDependency>
 						<groupId>fr.jmini.jxlint</groupId>
-						<artifactId>txtlinter</artifactId>
+						<artifactId>txtlinter-cli</artifactId>
 					</executableDependency>
 					<includePluginDependencies>true</includePluginDependencies>
 					<includeProjectDependencies>false</includeProjectDependencies>
-					<mainClass>fr.jmini.txtlinter.Main</mainClass>
+					<mainClass>fr.jmini.txtlinter.cli.Main</mainClass>
 					<arguments>
 						<argument>--xml</argument>
 						<argument>${project.build.directory}/report.xml</argument>
@@ -48,7 +48,7 @@
 				<dependencies>
 					<dependency>
 						<groupId>fr.jmini.jxlint</groupId>
-						<artifactId>txtlinter</artifactId>
+						<artifactId>txtlinter-cli</artifactId>
 						<version>1.0.0-SNAPSHOT</version>
 						<type>jar</type>
 					</dependency>

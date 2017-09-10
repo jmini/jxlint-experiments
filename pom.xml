@@ -11,7 +11,8 @@
         <module>docs</module>
         <module>jxlint-impl</module>
         <module>jxlint-impl-maven-plugin</module>
-        <module>txtlinter</module>
+        <module>txtlinter-core</module>
+        <module>txtlinter-cli</module>
         <module>txtlinter-maven-plugin</module>
         <module>example-project-java</module>
         <module>example-project-txt</module>
