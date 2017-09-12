@@ -10,12 +10,11 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.google.common.io.Files;
+import com.selesse.jxlint.model.rules.Category;
 import com.selesse.jxlint.model.rules.LintError;
 import com.selesse.jxlint.model.rules.LintRule;
 import com.selesse.jxlint.model.rules.Severity;
 import com.selesse.jxlint.utils.FileUtils;
-
-import fr.jmini.txtlinter.CustomCategories;
 
 public class NoMultipleNewLinesAtTheEndRule extends LintRule {
   private static final Logger LOG = LoggerFactory.getLogger(NoMultipleNewLinesAtTheEndRule.class);
@@ -24,7 +23,7 @@ public class NoMultipleNewLinesAtTheEndRule extends LintRule {
   private static final String summary = "Text document should end with zero or one new line. Additional new lines should be removed.";
 
   public NoMultipleNewLinesAtTheEndRule() {
-    super(name, summary, "", Severity.WARNING, CustomCategories.FORMAT);
+    super(name, summary, "", Severity.WARNING, Category.STYLE);
     setDetailedDescription(getMarkdownDescription());
   }
 
