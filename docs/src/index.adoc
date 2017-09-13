@@ -32,8 +32,13 @@ Have a look at git-link:jxlint-impl/src/main/java/com/selesse/jxlintimpl/Main.ja
 
 git-link:txtlinter/[txtlinter (GitHub)] is a linter example that performs some checks on `*.txt` files:
 
-* Lines should not be longer than 80 characters
-* Multiple empty new lines at the end of the document are not allowed
+* Lines should not be longer than 80 characters, read-more at: git-link:/txtlinter-core/src/main/resources/doc/rules/LinesAreNotLongerThan80CharsRule.md[LinesAreNotLongerThan80CharsRule]
+* Multiple empty new lines at the end of the document are not allowed, read-more at: git-link:/txtlinter-core/src/main/resources/doc/rules/NoMultipleNewLinesAtTheEndRule.md[NoMultipleNewLinesAtTheEndRule]
+
+From a code point of view:
+
+* Separation of the modules (`txtlinter-core`, `txtlinter-cli`, `txtlinter-maven-plugin`).
+* It is not using a custom category, but `com.selesse.jxlint.model.rules.Category`.
 
 === Project examples
 
@@ -55,24 +60,60 @@ The example projects should be tested by the linters.
 Different approaches can be used.
 
 ==== Specific maven plugins
-For the two linters, two specific maven plugin have been created git-link:jxlint-impl-maven-plugin/[jxlint-impl-maven-plugin (GitHub)] and git-link:txtlinter-maven-plugin/[txtlinter-maven-plugin (GitHub)].
+For the two linters, two specific maven plugin have been created: git-link:jxlint-impl-maven-plugin/[jxlint-impl-maven-plugin (GitHub)] and git-link:txtlinter-maven-plugin/[txtlinter-maven-plugin (GitHub)].
 
 They can be used directly as any other maven plugin:
 
 [source,xml]
 ----
-include::../../example-project-java/pom.xml[tags="config-maven-plugin", indent="0"]
+include::../../example-project-txt/pom.xml[tags="config-maven-plugin", indent="0"]
 ----
+
+Possible configuration parameters for the maven plugin:
+
+sourceDirectory:: Directory to scan (default value is `${project.basedir}`).
+outputType:: Type of report that should be created, possible values:
+**** `html` (default)
+**** `xml`
+outputFile:: Name of the file, where the report will be created (default value is `${project.build.directory}/report.html`).
+srcPathPrefix:: Local or remote path to the source directory, if not set (default) a relative path to the local file will be computed. For the `example-project-txt` project in this repository, the remote path to view the files on GitHub is: `https://github.com/jmini/jxlint-experiments/tree/master/example-project-txt/src`.
+enableOnlyRules:: Only check for these rules. Ignored if not set (default).
+disableRules:: Disable the list of rules. Ignored if not set (default).
+enableRules:: Enable the list of rules. Ignored if not set (default).
+enableCategories:: Run all rules of certain categories. Ignored if not set (default).
+noWarnings:: Only check for errors; ignore warnings. Possible values:
+**** `false` (default)
+**** `true`
+allWarnings:: Check all warnings, including those off by default. Possible values:
+**** `false` (default)
+**** `true`
+waringsAreErrors:: Treat all warnings as errors. Possible values:
+**** `false` (default)
+**** `true`
 
 ==== exec-maven-plugin
 
 The `org.codehaus.mojo:exec-maven-plugin` maven plugin is a generic plugin to run java programs during the build.
-Here is the corresponding configuration taken from the git-link:example-project-java/pom.xml[example-project-java/pom.xml] file:
+Here is the corresponding configuration taken from the git-link:example-project-txt/pom.xml[example-project-java/pom.xml] file:
 
 [source,xml]
 ----
-include::../../example-project-java/pom.xml[tags="config-exec-plugin", indent="0"]
+include::../../example-project-txt/pom.xml[tags="config-exec-plugin", indent="0"]
 ----
+
+==== cmd or sh script
+
+After the build, in the folder: `/txtlinter-cli/target/`, you will find a zip file (`txtlinter-cli-<version>-bin.zip`) containing all the dependencies and two basic scripts `txtlinter.cmd` and `txtlinter.sh` to call the main class with the appropriate classpath.
+
+Discover all available options with:
+
+[source,plain]
+----
+txtlinter --help
+----
+
+
+=== Output examples
 
 include::{github-readme}[tags=contact-section]
 
