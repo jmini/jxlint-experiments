@@ -20,14 +20,6 @@ include::{github-readme}[tags=description]
 
 These projects are using the jxlint framework and demonstrate how static analysis tools can be written.
 
-==== jxlint-impl
-
-git-link:jxlint-impl/[jxlint-impl (GitHub)] is copied from `jxlint-impl` in the link:https://github.com/selesse/jxlint[jxlint repository on GitHub].
-It performs some checks on java files.
-
-The modifications to the original project are tagged in the source code with a `<customized>...</customized>` section wrapped in java comments.
-Have a look at git-link:jxlint-impl/src/main/java/com/selesse/jxlintimpl/Main.java[Main.java] for an example.
-
 ==== txtlinter
 
 git-link:txtlinter/[txtlinter (GitHub)] is a linter example that performs some checks on `*.txt` files:
@@ -44,11 +36,6 @@ From a code point of view:
 
 These example projects provide some content for the linters.
 
-==== example-project-java
-
-git-link:example-project-java/[example-project-java (GitHub)] is a simple Java project containing a main class and a unit test class: `JavaExampleTest`.
-This class contains on purpose some mistakes, that should be marked as error by the <<jxlint-impl>> linter.
-
 ==== example-project-txt
 
 git-link:example-project-txt/[example-project-txt (GitHub)] is a simple maven project (`pom` packaging) containing a single text file in the `src` folder.
@@ -60,7 +47,7 @@ The example projects should be tested by the linters.
 Different approaches can be used.
 
 ==== Specific maven plugins
-For the two linters, two specific maven plugin have been created: git-link:jxlint-impl-maven-plugin/[jxlint-impl-maven-plugin (GitHub)] and git-link:txtlinter-maven-plugin/[txtlinter-maven-plugin (GitHub)].
+For the two linters, two specific maven plugin have been created: git-link:txtlinter-maven-plugin/[txtlinter-maven-plugin (GitHub)].
 
 They can be used directly as any other maven plugin:
 
