@@ -43,8 +43,9 @@ This `file.txt` contains on purpose some mistakes, that should be marked as erro
 
 === How to run the linters?
 
-The example projects should be tested by the linters.
-Different approaches can be used.
+The example projects are tested by the linters.
+Different approaches that can be used.
+The examples described below execute the `charchecker` linter on the text file contained in the `example-project-txt` project.
 
 ==== Specific maven plugins
 For the two linters, two specific maven plugin have been created: git-link:txtlinter-maven-plugin/[txtlinter-maven-plugin (GitHub)].
@@ -81,6 +82,7 @@ waringsAreErrors:: Treat all warnings as errors. Possible values:
 ==== exec-maven-plugin
 
 The `org.codehaus.mojo:exec-maven-plugin` maven plugin is a generic plugin to run java programs during the build.
+This plugin will take care of the classpath (the maven coordinates of the jar we want to use can be indicated, the plugin will derive the correct classpath, considering all maven dependencies of this artifact).
 Here is the corresponding configuration taken from the git-link:example-project-txt/pom.xml[example-project-java/pom.xml] file:
 
 [source,xml]
@@ -90,6 +92,10 @@ include::../../example-project-txt/pom.xml[tags="config-exec-plugin", indent="0"
 
 ==== cmd or sh script
 
+It is not likely that the command line tool will be used with the `exec-maven-plugin` (if you are in a maven build, you should use the maven plugin).
+Command line tools are often delivered with all their dependencies in a zip file.
+
+Such a zip file is build for the <<txtlinter>>: 
 After the build, in the folder: `/txtlinter-cli/target/`, you will find a zip file (`txtlinter-cli-<version>-bin.zip`) containing all the dependencies and two basic scripts `txtlinter.cmd` and `txtlinter.sh` to call the main class with the appropriate classpath.
 
 Discover all available options with:
@@ -101,6 +107,9 @@ txtlinter --help
 
 
 === Output examples
+
+Have a look at the link:example-report.html[html] or link:example-report.xml[xml] version of the report created by the `charchecker` linter after analysis of the files in the `example-project-txt` project.
+
 
 include::{github-readme}[tags=contact-section]
 
