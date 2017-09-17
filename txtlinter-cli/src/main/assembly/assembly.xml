@@ -24,6 +24,7 @@
             <includes>
                 <include>txtlinter.*</include>
             </includes>
+            <fileMode>0755</fileMode>
         </fileSet>
     </fileSets>
 </assembly>

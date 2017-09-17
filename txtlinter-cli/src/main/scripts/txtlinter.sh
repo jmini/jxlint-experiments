@@ -1,1 +1,1 @@
-java -cp lib/* fr.jmini.txtlinter.cli.Main $*
+java -cp "lib/*" fr.jmini.txtlinter.cli.Main $*
