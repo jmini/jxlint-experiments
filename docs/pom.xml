@@ -22,20 +22,33 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <asciidoctor.maven.plugin.version>1.5.3</asciidoctor.maven.plugin.version>
-        <asciidoctorj.version>1.5.4</asciidoctorj.version>
+        <asciidoctor.maven.plugin.version>1.5.5</asciidoctor.maven.plugin.version>
+        <asciidoctorj.version>1.5.5</asciidoctorj.version>
         <asciidoctorj.gh-edit.version>3.0.0</asciidoctorj.gh-edit.version>
-        <jruby.version>9.0.5.0</jruby.version>
+        <jruby.version>9.1.12.0</jruby.version>
+        <github.site.version>0.12</github.site.version>
+        <!-- configs -->
+        <adoc.output>${project.build.directory}/generated-docs</adoc.output>
+        <build.date>${maven.build.timestamp}</build.date>
+        <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
         <github.global.server>github</github.global.server> <!-- this should match the sever id in your settings.xml -->
         <!-- The project URL on GitHub is : https://github.com/${github.repository.owner}/${github.repository.name} -->
         <github.repository.owner>jmini</github.repository.owner>
         <github.repository.name>jxlint-experiments</github.repository.name>
-        <commit.message>Update the 'gh-pages' branch.</commit.message>
+        <github.commit.message>Update the 'gh-pages' branch</github.commit.message>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>fr.jmini.jxlint</groupId>
+            <artifactId>example-project-txt</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
-
             <!-- Run AsciidoctorJ -->
             <plugin>
                 <groupId>org.asciidoctor</groupId>
@@ -64,10 +77,13 @@
                     <sourceHighlighter>coderay</sourceHighlighter>
                     <attributes>
                         <icons>font</icons>
+                        <toc>left</toc>
                         <sectanchors>true</sectanchors>
-                        <idprefix/>
+                        <idprefix />
                         <idseparator>-</idseparator>
+                        <imagesdir />
                         <docinfo1>true</docinfo1>
+                        <revdate>${build.date}</revdate>
                         <sourcedir>${project.build.sourceDirectory}</sourcedir>
                         <project-version>${project.version}</project-version>
                     </attributes>
@@ -83,29 +99,50 @@
                 </executions>
             </plugin>
 
+            <!-- Copy the examples report -->
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-antrun-plugin</artifactId>
+              <version>1.8</version>
+              <configuration>
+                    <target>
+                        <copy file="${project.build.directory}/../../example-project-txt/target/myreport.html" tofile="${adoc.output}/example-report.html"/>
+                        <replaceregexp flags="gs" file="${adoc.output}/example-report.html" match="> [^&gt;&lt;]+example-project-txt" replace="> example-project-txt"/>
+                        <copy file="${project.build.directory}/../../example-project-txt/target/myreport.xml" tofile="${adoc.output}/example-report.xml"/>
+                        <replaceregexp flags="gs" file="${adoc.output}/example-report.xml" match="[^&quot;]+example-project-txt" replace="example-project-txt"/>
+                    </target>
+                </configuration>
+              <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>run</goal>
+                    </goals>
+                </execution>
+              </executions>
+            </plugin>
+
             <!-- Commit and push site to github pages, by default to gh-pages branch -->
             <!-- https://github.com/github/maven-plugins -->
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
-                <version>0.12</version>
+                <version>${github.site.version}</version>
                 <configuration>
-                    <message>${commit.message}</message>
-                    <outputDirectory>${project.build.directory}/generated-docs</outputDirectory>
+                    <message>${github.commit.message}</message>
+                    <outputDirectory>${adoc.output}</outputDirectory>
                     <repositoryName>${github.repository.name}</repositoryName>
                     <repositoryOwner>${github.repository.owner}</repositoryOwner>
                     <dryRun>false</dryRun>
-                    <excludes>
-                        <exclude>**/*.jsp</exclude>
-                        <exclude>**/web.xml</exclude>
-                    </excludes>
+                    <noJekyll>true</noJekyll>
                 </configuration>
                 <executions>
                     <execution>
+                        <id>push-to-gh-pages</id>
+                        <phase>site</phase>
                         <goals>
                             <goal>site</goal>
                         </goals>
-                        <phase>site</phase>
                     </execution>
                 </executions>
             </plugin>
@@ -120,6 +157,7 @@
                     <arguments>
                         <argument>clean:clean</argument>
                         <argument>asciidoctor:process-asciidoc</argument>
+                        <argument>org.apache.maven.plugins:maven-antrun-plugin:run</argument>
                         <argument>site:site</argument>
                         <argument>clean:clean</argument>
                     </arguments>

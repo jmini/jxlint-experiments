@@ -1,0 +1,1 @@
+No line should contain a lower case letter character (`a` - `z`).

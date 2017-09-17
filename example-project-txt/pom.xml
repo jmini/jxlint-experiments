@@ -18,39 +18,12 @@
 
 	<build>
 		<plugins>
-			<!--
-			    Workaround for "jxlint/#11" https://github.com/selesse/jxlint/issues/11
-			    An empty text file is created in the target directory, otherwise this folder do not exist when "txtlinter" is executed.
-			-->
-			<plugin>
-				<groupId>ru.yaal.maven</groupId>
-				<artifactId>write-text-files-maven-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<charset>UTF-8</charset>
-					<files>
-						<file>
-							<path>${project.build.directory}/empty.txt</path>
-							<lines>
-								<line></line>
-							</lines>
-						</file>
-					</files>
-				</configuration>
-				<executions>
-					<execution>
-						<id>write-empty-file</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>write-text-files</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!-- tag::config-exec-plugin[] -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<!-- Do not use 1.6.0 because of #76 issue https://github.com/mojohaus/exec-maven-plugin/issues/76 -->
+				<!-- Do not use 1.6.0 because of #76 issue
+				     https://github.com/mojohaus/exec-maven-plugin/issues/76 -->
 				<version>1.5.0</version>
 				<executions>
 					<execution>
@@ -63,86 +36,48 @@
 				<configuration>
 					<executableDependency>
 						<groupId>fr.jmini.jxlint</groupId>
-						<artifactId>txtlinter</artifactId>
+						<artifactId>txtlinter-cli</artifactId>
 					</executableDependency>
 					<includePluginDependencies>true</includePluginDependencies>
 					<includeProjectDependencies>false</includeProjectDependencies>
-					<mainClass>fr.jmini.txtlinter.Main</mainClass>
+					<mainClass>fr.jmini.txtlinter.cli.Main</mainClass>
 					<arguments>
-						<argument>--html</argument>
-						<argument>${project.build.directory}/txtlinter-report.html</argument>
+						<argument>--xml</argument>
+						<argument>${project.build.directory}/myreport.xml</argument>
 						<argument>${project.basedir}</argument>
 					</arguments>
 				</configuration>
 				<dependencies>
 					<dependency>
 						<groupId>fr.jmini.jxlint</groupId>
-						<artifactId>txtlinter</artifactId>
+						<artifactId>txtlinter-cli</artifactId>
 						<version>1.0.0-SNAPSHOT</version>
 						<type>jar</type>
 					</dependency>
 				</dependencies>
 			</plugin>
+<!-- end::config-exec-plugin[] -->
+<!-- tag::config-maven-plugin[] -->
 			<plugin>
 				<groupId>fr.jmini.jxlint</groupId>
 				<artifactId>txtlinter-maven-plugin</artifactId>
 				<version>1.0.0-SNAPSHOT</version>
 				<executions>
 					<execution>
-						<id>all</id>
 						<phase>test</phase>
 						<goals>
 							<goal>generate-report</goal>
 						</goals>
 						<configuration>
+							<sourceDirectory>${project.basedir}/src</sourceDirectory>
 							<outputType>html</outputType>
-							<outputFile>${project.build.directory}/report_all.html</outputFile>
-						</configuration>
-					</execution>
-					<execution>
-						<id>enable</id>
-						<phase>test</phase>
-						<goals>
-							<goal>generate-report</goal>
-						</goals>
-						<configuration>
-							<outputType>html</outputType>
-							<outputFile>${project.build.directory}/report_enable.html</outputFile>
-							<enableRules>
-								<enableRule>Multiple new lines at the end of the document</enableRule>
-							</enableRules>
-						</configuration>
-					</execution>
-					<execution>
-						<id>disable</id>
-						<phase>test</phase>
-						<goals>
-							<goal>generate-report</goal>
-						</goals>
-						<configuration>
-							<outputType>html</outputType>
-							<outputFile>${project.build.directory}/report_disable.html</outputFile>
-							<disableRules>
-								<disableRule>Multiple new lines at the end of the document</disableRule>
-							</disableRules>
-						</configuration>
-					</execution>
-					<execution>
-						<id>check</id>
-						<phase>test</phase>
-						<goals>
-							<goal>generate-report</goal>
-						</goals>
-						<configuration>
-							<outputType>html</outputType>
-							<outputFile>${project.build.directory}/report_check.html</outputFile>
-							<enableOnlyRules>
-								<enableOnlyRule>Multiple new lines at the end of the document</enableOnlyRule>
-							</enableOnlyRules>
+							<outputFile>${project.build.directory}/myreport.html</outputFile>
+							<srcPathPrefix>https://github.com/jmini/jxlint-experiments/tree/master/example-project-txt/src</srcPathPrefix>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+<!-- end::config-maven-plugin[] -->
 		</plugins>
 	</build>
 </project>

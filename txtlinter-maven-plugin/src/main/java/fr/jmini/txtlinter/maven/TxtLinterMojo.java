@@ -6,7 +6,6 @@ import com.selesse.jxlint.maven.AbstractJxlintMojo;
 import com.selesse.jxlint.model.rules.LintRules;
 import com.selesse.jxlint.settings.ProgramSettings;
 
-import fr.jmini.txtlinter.CustomCategories;
 import fr.jmini.txtlinter.rules.TxtLinterRules;
 import fr.jmini.txtlinter.settings.TxtLinterProgramSettings;
 
@@ -22,10 +21,4 @@ public class TxtLinterMojo extends AbstractJxlintMojo {
   protected LintRules provideLintRules() {
     return new TxtLinterRules();
   }
-
-  @Override
-  protected Class<? extends Enum<?>> provideCategories() {
-    return CustomCategories.class;
-  }
-
 }
