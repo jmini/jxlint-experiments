@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="generator" content="Asciidoctor 1.5.5">
 <meta name="author" content="Experiments with the jxlint framework">
 <title>jxlint experiments</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -18,7 +18,6 @@ audio:not([controls]){display:none;height:0}
 [hidden],template{display:none}
 script{display:none!important}
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
-body{margin:0}
 a{background:transparent}
 a:focus{outline:thin dotted}
 a:active,a:hover{outline:0}
@@ -53,7 +52,7 @@ textarea{overflow:auto;vertical-align:top}
 table{border-collapse:collapse;border-spacing:0}
 *,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
 html,body{font-size:100%}
-body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
 a:hover{cursor:pointer}
 img,object,embed{max-width:100%;height:auto}
 object,embed{height:100%}
@@ -65,7 +64,6 @@ img{-ms-interpolation-mode:bicubic}
 .text-center{text-align:center!important}
 .text-justify{text-align:justify!important}
 .hide{display:none}
-body{-webkit-font-smoothing:antialiased}
 img,object,svg{display:inline-block;vertical-align:middle}
 textarea{height:auto;min-height:50px}
 select{width:100%}
@@ -120,13 +118,16 @@ table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:
 table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
 table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
 table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
-body{tab-size:4}
 h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
 h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
 .clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}
 .clearfix:after,.float-group:after{clear:both}
-*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
 pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
 .keyseq{color:rgba(51,51,51,.8)}
 kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
 .keyseq kbd:first-child{margin-left:0}
@@ -417,7 +418,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -510,11 +511,28 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>jxlint experiments</h1>
 <div class="details">
 <span id="author" class="author">Experiments with the jxlint framework</span><br>
+<span id="revdate">2017-09-17</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#urls">URLs</a></li>
+<li><a href="#description">Description</a>
+<ul class="sectlevel2">
+<li><a href="#linter-examples">Linter examples</a></li>
+<li><a href="#project-examples">Project examples</a></li>
+<li><a href="#how-to-run-the-linters">How to run the linters?</a></li>
+<li><a href="#output-examples">Output examples</a></li>
+</ul>
+</li>
+<li><a href="#get-in-touch">Get in touch</a></li>
+<li><a href="#license">License</a></li>
+</ul>
 </div>
 </div>
 <div id="content">
@@ -562,17 +580,6 @@ This repository contains some experiments around the framework.</p>
 <p>These projects are using the jxlint framework and demonstrate how static analysis tools can be written.</p>
 </div>
 <div class="sect3">
-<h4 id="jxlint-impl"><a class="anchor" href="#jxlint-impl"></a>jxlint-impl</h4>
-<div class="paragraph">
-<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/jxlint-impl">jxlint-impl (GitHub)</a> is copied from <code>jxlint-impl</code> in the <a href="https://github.com/selesse/jxlint">jxlint repository on GitHub</a>.
-It performs some checks on java files.</p>
-</div>
-<div class="paragraph">
-<p>The modifications to the original project are tagged in the source code with a <code>&lt;customized&gt;&#8230;&#8203;&lt;/customized&gt;</code> section wrapped in java comments.
-Have a look at <a href="https://github.com/jmini/jxlint-experiments/blob/master/jxlint-impl/src/main/java/com/selesse/jxlintimpl/Main.java">Main.java</a> for an example.</p>
-</div>
-</div>
-<div class="sect3">
 <h4 id="txtlinter"><a class="anchor" href="#txtlinter"></a>txtlinter</h4>
 <div class="paragraph">
 <p><a href="https://github.com/jmini/jxlint-experiments/tree/master/txtlinter">txtlinter (GitHub)</a> is a linter example that performs some checks on <code>*.txt</code> files:</p>
@@ -580,12 +587,78 @@ Have a look at <a href="https://github.com/jmini/jxlint-experiments/blob/master/
 <div class="ulist">
 <ul>
 <li>
-<p>Lines should not be longer than 80 characters</p>
+<p>Lines should not be longer than 80 characters, read-more at: <a href="https://github.com/jmini/jxlint-experiments/blob/master/txtlinter-core/src/main/resources/doc/rules/LinesAreNotLongerThan80CharsRule.md">LinesAreNotLongerThan80CharsRule</a></p>
 </li>
 <li>
-<p>Multiple empty new lines at the end of the document are not allowed</p>
+<p>Multiple empty new lines at the end of the document are not allowed, read-more at: <a href="https://github.com/jmini/jxlint-experiments/blob/master/txtlinter-core/src/main/resources/doc/rules/NoMultipleNewLinesAtTheEndRule.md">NoMultipleNewLinesAtTheEndRule</a></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>From a code point of view:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Separation of the modules (<code>txtlinter-core</code>, <code>txtlinter-cli</code>, <code>txtlinter-maven-plugin</code>).</p>
+</li>
+<li>
+<p>It is not using a custom category, but <code>com.selesse.jxlint.model.rules.Category</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="charchecker"><a class="anchor" href="#charchecker"></a>charchecker</h4>
+<div class="paragraph">
+<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/txtlinter">charchecker (GitHub)</a> is a linter example that ensure that the lines of the text files do not contains certain characters.
+This is a technical project.
+The intention is not to have rules that could be real use cases.</p>
+</div>
+<div class="paragraph">
+<p>From a code point of view:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All in one modules (same jar used a maven plugin and for the command line usage)</p>
+</li>
+<li>
+<p>Custom category: <code>fr.jmini.charchecker.CharCheckerCategory</code> providing 2 values:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Letter</code></p>
+</li>
+<li>
+<p><code>Number</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The rules are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">LowercaseRule</dt>
+<dd>
+<p>No line should contain a lower case letter character (<code>a</code> - <code>z</code>).
+This rule belongs to the <code>Letter</code> category</p>
+</dd>
+<dt class="hdlist1">UpercaseRule</dt>
+<dd>
+<p>No line should contain a upper case letter character (<code>A</code> - <code>Z</code>).
+This rule belongs to the <code>Letter</code> category</p>
+</dd>
+<dt class="hdlist1">NumberRule</dt>
+<dd>
+<p>No line should contain a number character.
+This rule belongs to the <code>Number</code> category</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -595,30 +668,30 @@ Have a look at <a href="https://github.com/jmini/jxlint-experiments/blob/master/
 <p>These example projects provide some content for the linters.</p>
 </div>
 <div class="sect3">
-<h4 id="example-project-java"><a class="anchor" href="#example-project-java"></a>example-project-java</h4>
-<div class="paragraph">
-<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/example-project-java">example-project-java (GitHub)</a> is a simple Java project containing a main class and a unit test class: <code>JavaExampleTest</code>.
-This class contains on purpose some mistakes, that should be marked as error by the <a href="#jxlint-impl">jxlint-impl</a> linter.</p>
-</div>
-</div>
-<div class="sect3">
 <h4 id="example-project-txt"><a class="anchor" href="#example-project-txt"></a>example-project-txt</h4>
 <div class="paragraph">
 <p><a href="https://github.com/jmini/jxlint-experiments/tree/master/example-project-txt">example-project-txt (GitHub)</a> is a simple maven project (<code>pom</code> packaging) containing a single text file in the <code>src</code> folder.
 This <code>file.txt</code> contains on purpose some mistakes, that should be marked as error by the <a href="#txtlinter">txtlinter</a> linter.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="example-project-chars"><a class="anchor" href="#example-project-chars"></a>example-project-chars</h4>
+<div class="paragraph">
+<p><a href="https://github.com/jmini/jxlint-experiments/tree/master/example-project-txt">example-project-txt (GitHub)</a> is a simple maven project (<code>pom</code> packaging) containing some text files that should be analyzed by the <a href="#charchecker">charchecker</a>.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="how-to-run-the-linters"><a class="anchor" href="#how-to-run-the-linters"></a>How to run the linters?</h3>
 <div class="paragraph">
-<p>The example projects should be tested by the linters.
-Different approaches can be used.</p>
+<p>The example projects are tested by the linters.
+Different approaches that can be used.
+The examples described below execute the <code>charchecker</code> linter on the text file contained in the <code>example-project-txt</code> project.</p>
 </div>
 <div class="sect3">
 <h4 id="specific-maven-plugins"><a class="anchor" href="#specific-maven-plugins"></a>Specific maven plugins</h4>
 <div class="paragraph">
-<p>For the two linters, two specific maven plugin have been created <a href="https://github.com/jmini/jxlint-experiments/tree/master/jxlint-impl-maven-plugin">jxlint-impl-maven-plugin (GitHub)</a> and <a href="https://github.com/jmini/jxlint-experiments/tree/master/txtlinter-maven-plugin">txtlinter-maven-plugin (GitHub)</a>.</p>
+<p>For the two linters, two specific maven plugin have been created: <a href="https://github.com/jmini/jxlint-experiments/tree/master/txtlinter-maven-plugin">txtlinter-maven-plugin (GitHub)</a>.</p>
 </div>
 <div class="paragraph">
 <p>They can be used directly as any other maven plugin:</p>
@@ -627,7 +700,7 @@ Different approaches can be used.</p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>fr.jmini.jxlint<span class="tag">&lt;/groupId&gt;</span>
-        <span class="tag">&lt;artifactId&gt;</span>jxlint-impl-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>txtlinter-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
         <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
         <span class="tag">&lt;executions&gt;</span>
                 <span class="tag">&lt;execution&gt;</span>
@@ -637,20 +710,113 @@ Different approaches can be used.</p>
                         <span class="tag">&lt;/goals&gt;</span>
                         <span class="tag">&lt;configuration&gt;</span>
                                 <span class="tag">&lt;sourceDirectory&gt;</span>${project.basedir}/src<span class="tag">&lt;/sourceDirectory&gt;</span>
-                                <span class="tag">&lt;outputType&gt;</span>xml<span class="tag">&lt;/outputType&gt;</span>
-                                <span class="tag">&lt;outputFile&gt;</span>${project.build.directory}/report.xml<span class="tag">&lt;/outputFile&gt;</span>
+                                <span class="tag">&lt;outputType&gt;</span>html<span class="tag">&lt;/outputType&gt;</span>
+                                <span class="tag">&lt;outputFile&gt;</span>${project.build.directory}/myreport.html<span class="tag">&lt;/outputFile&gt;</span>
+                                <span class="tag">&lt;srcPathPrefix&gt;</span>https://github.com/jmini/jxlint-experiments/tree/master/example-project-txt/src<span class="tag">&lt;/srcPathPrefix&gt;</span>
                         <span class="tag">&lt;/configuration&gt;</span>
                 <span class="tag">&lt;/execution&gt;</span>
         <span class="tag">&lt;/executions&gt;</span>
 <span class="tag">&lt;/plugin&gt;</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Possible configuration parameters for the maven plugin:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">sourceDirectory</dt>
+<dd>
+<p>Directory to scan (default value is <code>${project.basedir}</code>).</p>
+</dd>
+<dt class="hdlist1">outputType</dt>
+<dd>
+<p>Type of report that should be created, possible values:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>html</code> (default)</p>
+</li>
+<li>
+<p><code>xml</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">outputFile</dt>
+<dd>
+<p>Name of the file, where the report will be created (default value is <code>${project.build.directory}/report.html</code>).</p>
+</dd>
+<dt class="hdlist1">srcPathPrefix</dt>
+<dd>
+<p>Local or remote path to the source directory, if not set (default) a relative path to the local file will be computed. For the <code>example-project-txt</code> project in this repository, the remote path to view the files on GitHub is: <code><a href="https://github.com/jmini/jxlint-experiments/tree/master/example-project-txt/src" class="bare">https://github.com/jmini/jxlint-experiments/tree/master/example-project-txt/src</a></code>.</p>
+</dd>
+<dt class="hdlist1">enableOnlyRules</dt>
+<dd>
+<p>Only check for these rules. Ignored if not set (default).</p>
+</dd>
+<dt class="hdlist1">disableRules</dt>
+<dd>
+<p>Disable the list of rules. Ignored if not set (default).</p>
+</dd>
+<dt class="hdlist1">enableRules</dt>
+<dd>
+<p>Enable the list of rules. Ignored if not set (default).</p>
+</dd>
+<dt class="hdlist1">enableCategories</dt>
+<dd>
+<p>Run all rules of certain categories. Ignored if not set (default).</p>
+</dd>
+<dt class="hdlist1">noWarnings</dt>
+<dd>
+<p>Only check for errors; ignore warnings. Possible values:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>false</code> (default)</p>
+</li>
+<li>
+<p><code>true</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">allWarnings</dt>
+<dd>
+<p>Check all warnings, including those off by default. Possible values:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>false</code> (default)</p>
+</li>
+<li>
+<p><code>true</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">waringsAreErrors</dt>
+<dd>
+<p>Treat all warnings as errors. Possible values:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>false</code> (default)</p>
+</li>
+<li>
+<p><code>true</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
 </div>
 <div class="sect3">
 <h4 id="exec-maven-plugin"><a class="anchor" href="#exec-maven-plugin"></a>exec-maven-plugin</h4>
 <div class="paragraph">
 <p>The <code>org.codehaus.mojo:exec-maven-plugin</code> maven plugin is a generic plugin to run java programs during the build.
-Here is the corresponding configuration taken from the <a href="https://github.com/jmini/jxlint-experiments/blob/master/example-project-java/pom.xml">example-project-java/pom.xml</a> file:</p>
+This plugin will take care of the classpath (the maven coordinates of the jar we want to use can be indicated, the plugin will derive the correct classpath, considering all maven dependencies of this artifact).
+Here is the corresponding configuration taken from the <a href="https://github.com/jmini/jxlint-experiments/blob/master/example-project-txt/pom.xml">example-project-java/pom.xml</a> file:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -671,21 +837,21 @@ Here is the corresponding configuration taken from the <a href="https://github.c
         <span class="tag">&lt;configuration&gt;</span>
                 <span class="tag">&lt;executableDependency&gt;</span>
                         <span class="tag">&lt;groupId&gt;</span>fr.jmini.jxlint<span class="tag">&lt;/groupId&gt;</span>
-                        <span class="tag">&lt;artifactId&gt;</span>jxlint-impl<span class="tag">&lt;/artifactId&gt;</span>
+                        <span class="tag">&lt;artifactId&gt;</span>txtlinter-cli<span class="tag">&lt;/artifactId&gt;</span>
                 <span class="tag">&lt;/executableDependency&gt;</span>
                 <span class="tag">&lt;includePluginDependencies&gt;</span>true<span class="tag">&lt;/includePluginDependencies&gt;</span>
                 <span class="tag">&lt;includeProjectDependencies&gt;</span>false<span class="tag">&lt;/includeProjectDependencies&gt;</span>
-                <span class="tag">&lt;mainClass&gt;</span>com.selesse.jxlintimpl.Main<span class="tag">&lt;/mainClass&gt;</span>
+                <span class="tag">&lt;mainClass&gt;</span>fr.jmini.txtlinter.cli.Main<span class="tag">&lt;/mainClass&gt;</span>
                 <span class="tag">&lt;arguments&gt;</span>
-                        <span class="tag">&lt;argument&gt;</span>--html<span class="tag">&lt;/argument&gt;</span>
-                        <span class="tag">&lt;argument&gt;</span>${project.build.directory}/jxlint-report.html<span class="tag">&lt;/argument&gt;</span>
+                        <span class="tag">&lt;argument&gt;</span>--xml<span class="tag">&lt;/argument&gt;</span>
+                        <span class="tag">&lt;argument&gt;</span>${project.build.directory}/myreport.xml<span class="tag">&lt;/argument&gt;</span>
                         <span class="tag">&lt;argument&gt;</span>${project.basedir}<span class="tag">&lt;/argument&gt;</span>
                 <span class="tag">&lt;/arguments&gt;</span>
         <span class="tag">&lt;/configuration&gt;</span>
         <span class="tag">&lt;dependencies&gt;</span>
                 <span class="tag">&lt;dependency&gt;</span>
                         <span class="tag">&lt;groupId&gt;</span>fr.jmini.jxlint<span class="tag">&lt;/groupId&gt;</span>
-                        <span class="tag">&lt;artifactId&gt;</span>jxlint-impl<span class="tag">&lt;/artifactId&gt;</span>
+                        <span class="tag">&lt;artifactId&gt;</span>txtlinter-cli<span class="tag">&lt;/artifactId&gt;</span>
                         <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
                         <span class="tag">&lt;type&gt;</span>jar<span class="tag">&lt;/type&gt;</span>
                 <span class="tag">&lt;/dependency&gt;</span>
@@ -693,6 +859,31 @@ Here is the corresponding configuration taken from the <a href="https://github.c
 <span class="tag">&lt;/plugin&gt;</span></code></pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="cmd-or-sh-script"><a class="anchor" href="#cmd-or-sh-script"></a>cmd or sh script</h4>
+<div class="paragraph">
+<p>It is not likely that the command line tool will be used with the <code>exec-maven-plugin</code> (if you are in a maven build, you should use the maven plugin).
+Command line tools are often delivered with all their dependencies in a zip file.</p>
+</div>
+<div class="paragraph">
+<p>Such a zip file is build for the <a href="#txtlinter">txtlinter</a>:
+After the build, in the folder: <code>/txtlinter-cli/target/</code>, you will find a zip file (<code>txtlinter-cli-&lt;version&gt;-bin.zip</code>) containing all the dependencies and two basic scripts <code>txtlinter.cmd</code> and <code>txtlinter.sh</code> to call the main class with the appropriate classpath.</p>
+</div>
+<div class="paragraph">
+<p>Discover all available options with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="plain">txtlinter --help</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="output-examples"><a class="anchor" href="#output-examples"></a>Output examples</h3>
+<div class="paragraph">
+<p>Have a look at the <a href="example-report.html">html</a> or <a href="example-report.xml">xml</a> version of the report created by the <code>charchecker</code> linter after analysis of the files in the <code>example-project-txt</code> project.</p>
 </div>
 </div>
 </div>
@@ -719,7 +910,7 @@ Here is the corresponding configuration taken from the <a href="https://github.c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-21 06:43:14 CEST
+Last updated 2017-09-17 10:48:43 CEST
 </div>
 </div>
 </body>

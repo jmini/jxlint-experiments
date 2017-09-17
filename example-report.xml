@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues>
+    <issue
+        name="Lines should not be longer than 80 characters"
+        severity="Warning"
+        message="Line 2 is too long (length: 105)"
+        category="STYLE"
+        summary="The line length should be less than or equal to 80."
+        explanation="In a text file (ending with `.txt`) the line should not be longer than 80 characters.&#xA;&#xA;For example:&#xA;&#xA;    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris faucibus massa &#xA;    at erat feugiat cursus. In aliquet imperdiet efficitur. Vivamus egestas ipsum ac diam lobortis pharetra. &#xA;    Donec pretium pulvinar lectus eget commodo. In a erat ut quam auctor facilisis &#xA;    quis non mi. Donec sollicitudin commodo augue eget pellentesque. Pellentesque &#xA;    turpis turpis, convallis vel nisi eu, semper placerat neque.&#xA;&#xA;In this case, the second line is too long"
+        location="example-project-txt\src\file.txt"
+        lineNumber="2"
+    />
+    <issue
+        name="Multiple new lines at the end of the document"
+        severity="Warning"
+        message="Line 9 is one of the multiple empty new lines at the end of the document. This is not allowed"
+        category="STYLE"
+        summary="Text document should end with zero or one new line. Additional new lines should be removed."
+        explanation="In a text file (ending with `.txt`) there should be no multiple new line at the end of the document.&#xA;One single new line is OK, but not multiple&#xA;&#xA;This example is OK:&#xA;&#xA;    ----&#xA;    Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#xA;    Mauris faucibus massa at erat feugiat cursus.&#xA;    ----&#xA;&#xA;This one is also OK:&#xA;&#xA;    ----&#xA;    Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#xA;    Mauris faucibus massa at erat feugiat cursus.&#xA;    \ No newline at end of file&#xA;    ----&#xA;&#xA;This one is not OK:&#xA;&#xA;    ----&#xA;    Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#xA;    Mauris faucibus massa at erat feugiat cursus.&#xA;    &#xA;    ----&#xA;&#xA;Lines containing only white spaces are considered as empty."
+        location="example-project-txt\src\file.txt"
+        lineNumber="9"
+    />
+</issues>
