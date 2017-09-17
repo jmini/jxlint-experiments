@@ -32,6 +32,33 @@ From a code point of view:
 * Separation of the modules (`txtlinter-core`, `txtlinter-cli`, `txtlinter-maven-plugin`).
 * It is not using a custom category, but `com.selesse.jxlint.model.rules.Category`.
 
+==== charchecker
+
+git-link:txtlinter/[charchecker (GitHub)] is a linter example that ensure that the lines of the text files do not contains certain characters.
+This is a technical project.
+The intention is not to have rules that could be real use cases.
+
+From a code point of view:
+
+* All in one modules (same jar used a maven plugin and for the command line usage)
+* Custom category: `fr.jmini.charchecker.CharCheckerCategory` providing 2 values:
+** `Letter`
+** `Number`
+
+The rules are:
+
+LowercaseRule::
+include::../../charchecker/src/main/resources/doc/rules/LowercaseRule.md[]
+This rule belongs to the `Letter` category
+
+UpercaseRule::
+include::../../charchecker/src/main/resources/doc/rules/UpercaseRule.md[]
+This rule belongs to the `Letter` category
+
+NumberRule::
+include::../../charchecker/src/main/resources/doc/rules/NumberRule.md[]
+This rule belongs to the `Number` category
+
 === Project examples
 
 These example projects provide some content for the linters.
@@ -40,6 +67,10 @@ These example projects provide some content for the linters.
 
 git-link:example-project-txt/[example-project-txt (GitHub)] is a simple maven project (`pom` packaging) containing a single text file in the `src` folder.
 This `file.txt` contains on purpose some mistakes, that should be marked as error by the <<txtlinter>> linter.
+
+==== example-project-chars
+
+git-link:example-project-txt/[example-project-txt (GitHub)] is a simple maven project (`pom` packaging) containing some text files that should be analyzed by the <<charchecker>>.
 
 === How to run the linters?
 
