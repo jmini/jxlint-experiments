@@ -1,1 +1,1 @@
-No line should contain a number character.
+No line should contain a number character (`0` - `9`).
